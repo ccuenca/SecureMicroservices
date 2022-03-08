@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Movies.Client.ApiServices;
 using Movies.Client.Models;
 
