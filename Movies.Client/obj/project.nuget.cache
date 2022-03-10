@@ -1,8 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "RumA6caVVf7i3cWgzY15OcrAfYHPYH24dC1LINZ/c8n57nTHGl4QqRea3PnUIwaT+Dys0KK8KlhFA0TTLxI22A==",
+  "dgSpecHash": "84KIaH6szkKmAFjwvcyLKEBfFwFnYQa22eZxe9MFaVSyMFEjoPyTuYYf88HRFZfXTAsnCUjwICGfVipJ/wYkeg==",
   "success": true,
   "projectFilePath": "/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/Movies.Client.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.aspnetcore.authentication.openidconnect/6.0.3/microsoft.aspnetcore.authentication.openidconnect.6.0.3.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.identitymodel.jsonwebtokens/6.10.0/microsoft.identitymodel.jsonwebtokens.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.identitymodel.logging/6.10.0/microsoft.identitymodel.logging.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.identitymodel.protocols/6.10.0/microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.10.0/microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/microsoft.identitymodel.tokens/6.10.0/microsoft.identitymodel.tokens.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/system.identitymodel.tokens.jwt/6.10.0/system.identitymodel.tokens.jwt.6.10.0.nupkg.sha512",
+    "/Users/cristhiancuenca/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512"
+  ],
   "logs": []
 }

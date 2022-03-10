@@ -27,8 +27,8 @@ namespace IdentityServer
                    {
                        ClientId = "movies_mvc_client",
                        ClientName = "Movies MVC Web App",
-                       AllowedGrantTypes = GrantTypes.Hybrid,
-                       RequirePkce = false,
+                       AllowedGrantTypes = GrantTypes.Code,
+                       //RequirePkce = false,
                        AllowRememberConsent = false,
                        RedirectUris = new List<string>()
                        {
@@ -46,10 +46,10 @@ namespace IdentityServer
                        {
                            IdentityServerConstants.StandardScopes.OpenId,
                            IdentityServerConstants.StandardScopes.Profile,
-                           IdentityServerConstants.StandardScopes.Address,
-                           IdentityServerConstants.StandardScopes.Email,
-                           "movieAPI",
-                           "roles"
+                           //dentityServerConstants.StandardScopes.Address,
+                           //IdentityServerConstants.StandardScopes.Email,
+                           //"movieAPI",
+                           //"roles"
                        }
                    }
             };
@@ -71,12 +71,12 @@ namespace IdentityServer
           {
               new IdentityResources.OpenId(),
               new IdentityResources.Profile(),
-              new IdentityResources.Address(),
-              new IdentityResources.Email(),
-              new IdentityResource(
-                    "roles",
-                    "Your role(s)",
-                    new List<string>() { "role" })
+              //new IdentityResources.Address(),
+              //new IdentityResources.Email(),
+              //new IdentityResource(
+              //      "roles",
+              //      "Your role(s)",
+              //      new List<string>() { "role" })
           };
 
         public static List<TestUser> TestUsers =>
@@ -85,12 +85,12 @@ namespace IdentityServer
                 new TestUser
                 {
                     SubjectId = "5BE86359-073C-434B-AD2D-A3932222DABE",
-                    Username = "mehmet",
-                    Password = "swn",
+                    Username = "ccuenca",
+                    Password = "1",
                     Claims = new List<Claim>
                     {
-                        new Claim(JwtClaimTypes.GivenName, "mehmet"),
-                        new Claim(JwtClaimTypes.FamilyName, "ozkaya")
+                        new Claim(JwtClaimTypes.GivenName, "Cristhian"),
+                        new Claim(JwtClaimTypes.FamilyName, "Cuenca")
                     }
                 }
             };

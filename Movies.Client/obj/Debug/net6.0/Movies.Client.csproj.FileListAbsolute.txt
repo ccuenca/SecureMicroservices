@@ -24,3 +24,11 @@
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/obj/Debug/net6.0/ref/Movies.Client.dll
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/obj/Debug/net6.0/Movies.Client.pdb
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/obj/Debug/net6.0/Movies.Client.genruntimeconfig.cache
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.IdentityModel.Logging.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/Microsoft.IdentityModel.Tokens.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/bin/Debug/net6.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/Movies.Client/obj/Debug/net6.0/Movies.Client.csproj.CopyComplete

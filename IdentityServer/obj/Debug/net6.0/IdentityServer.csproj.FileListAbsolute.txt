@@ -71,3 +71,6 @@
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/obj/Debug/net6.0/IdentityServer.pdb
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/obj/Debug/net6.0/IdentityServer.genruntimeconfig.cache
 /Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/bin/Debug/net6.0/IdentityServer.staticwebassets.runtime.json
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/obj/Debug/net6.0/IdentityServer.RazorAssemblyInfo.cache
+/Users/cristhiancuenca/SourceCode/dotnet-workspace/SecureMicroservices/IdentityServer/obj/Debug/net6.0/IdentityServer.RazorAssemblyInfo.cs
