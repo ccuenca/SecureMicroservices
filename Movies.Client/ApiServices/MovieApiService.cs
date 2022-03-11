@@ -6,6 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using IdentityModel.Client;
+using Newtonsoft.Json;
 
 namespace Movies.Client.ApiServices
 {
@@ -14,102 +16,93 @@ namespace Movies.Client.ApiServices
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        // public MovieApiService(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
-        // {
-        //     _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-        //     _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
-        // }
-
-        public MovieApiService()
+        public MovieApiService(IHttpClientFactory httpClientFactory, IHttpContextAccessor httpContextAccessor)
         {
-
+            _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
-
 
         public async Task<IEnumerable<Movie>> GetMovies()
         {
 
-            var movieList = new List<Movie>();
+            //////////////////////
+            //WAY 1 :
 
-            movieList.Add(new Movie()
-            {
-                Id = 1,
-                Genre = "Comic",
-                Title = "Test",
-                Rating = "9.2",
-                ImageUrl = "images/src",
-                ReleaseDate = DateTime.Now,
-                Owner = "swn"
-            });
+            var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
 
-            return await Task.FromResult(movieList);
+            var request = new HttpRequestMessage(HttpMethod.Get, "api/movies");
 
-            ////////////////////////
-            // WAY 1 :
+            var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
 
-            /* var httpClient = _httpClientFactory.CreateClient("MovieAPIClient");
+            response.EnsureSuccessStatusCode();
 
-             var request = new HttpRequestMessage(
-                 HttpMethod.Get,
-                 "/movies");
+            var content = await response.Content.ReadAsStringAsync();
+            var movieList = JsonConvert.DeserializeObject<List<Movie>>(content);
+            return movieList;
 
-             var response = await httpClient.SendAsync(
-                 request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
-
-             response.EnsureSuccessStatusCode();
-
-             var content = await response.Content.ReadAsStringAsync();
-             var movieList = JsonConvert.DeserializeObject<List<Movie>>(content);
-             return movieList;*/
 
             ////////////////////////// //////////////////////// ////////////////////////
             //// WAY 2 :
 
-            //// 1. "retrieve" our api credentials. This must be registered on Identity Server!
-            //var apiClientCredentials = new ClientCredentialsTokenRequest
-            //{
-            //    Address = "https://localhost:5005/connect/token",
+            // // 1. "retrieve" our api credentials. This must be registered on Identity Server!
+            // var apiClientCredentials = new ClientCredentialsTokenRequest
+            // {
+            //     Address = "https://localhost:5005/connect/token",
+            //     ClientId = "movieClient",
+            //     ClientSecret = "secret",
+            //     // This is the scope our Protected API requires. 
+            //     Scope = "movieAPI"
+            // };
 
-            //    ClientId = "movieClient",
-            //    ClientSecret = "secret",
+            // // creates a new HttpClient to talk to our IdentityServer (localhost:5005)
+            // var client = new HttpClient();
 
-            //    // This is the scope our Protected API requires. 
-            //    Scope = "movieAPI"
-            //};
+            // // just checks if we can reach the Discovery document. Not 100% needed but..
+            // var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5005");
+            // if (disco.IsError)
+            // {
+            //     return null; // throw 500 error
+            // }
 
-            //// creates a new HttpClient to talk to our IdentityServer (localhost:5005)
-            //var client = new HttpClient();
+            // // 2. Authenticates and get an access token from Identity Server
+            // var tokenResponse = await client.RequestClientCredentialsTokenAsync(apiClientCredentials);
+            // if (tokenResponse.IsError)
+            // {
+            //     return null;
+            // }
 
-            //// just checks if we can reach the Discovery document. Not 100% needed but..
-            //var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5005");
-            //if (disco.IsError)
-            //{
-            //    return null; // throw 500 error
-            //}
+            // // Another HttpClient for talking now with our Protected API
+            // var apiClient = new HttpClient();
 
-            //// 2. Authenticates and get an access token from Identity Server
-            //var tokenResponse = await client.RequestClientCredentialsTokenAsync(apiClientCredentials);            
-            //if (tokenResponse.IsError)
-            //{
-            //    return null;
-            //}
+            // // 3. Set the access_token in the request Authorization: Bearer <token>
+            // client.SetBearerToken(tokenResponse.AccessToken);
 
-            //// Another HttpClient for talking now with our Protected API
-            //var apiClient = new HttpClient();
+            // // 4. Send a request to our Protected API
+            // var response = await client.GetAsync("https://localhost:5001/api/movies");
+            // response.EnsureSuccessStatusCode();
 
-            //// 3. Set the access_token in the request Authorization: Bearer <token>
-            //client.SetBearerToken(tokenResponse.AccessToken);
+            // var content = await response.Content.ReadAsStringAsync();
 
-            //// 4. Send a request to our Protected API
-            //var response = await client.GetAsync("https://localhost:5001/api/movies");
-            //response.EnsureSuccessStatusCode();
-
-            //var content = await response.Content.ReadAsStringAsync();
-
-            //var movieList = JsonConvert.DeserializeObject<List<Movie>>(content);
-            //return movieList;
+            // var movieList = JsonConvert.DeserializeObject<List<Movie>>(content);
+            // return movieList;
 
 
+            //Local object to response
+
+            // var movieList = new List<Movie>();
+
+            // movieList.Add(new Movie()
+            // {
+            //     Id = 1,
+            //     Genre = "Comic",
+            //     Title = "Test",
+            //     Rating = "9.2",
+            //     ImageUrl = "images/src",
+            //     ReleaseDate = DateTime.Now,
+            //     Owner = "swn"
+            // });
+
+            // return await Task.FromResult(movieList);
         }
 
         public Task<Movie> GetMovie(string id)
