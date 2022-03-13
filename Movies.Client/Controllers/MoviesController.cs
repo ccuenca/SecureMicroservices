@@ -32,11 +32,10 @@ namespace Movies.Client.Controllers
             }
         }
 
-
         // GET: Movies
         public async Task<IActionResult> Index()
         {
-            LogTokenAndClaims();
+            await LogTokenAndClaims();
             return View(await _movieApiService.GetMovies());
         }
 
@@ -182,6 +181,13 @@ namespace Movies.Client.Controllers
         {
             await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignOutAsync(OpenIdConnectDefaults.AuthenticationScheme);
+        }
+
+        [Authorize(Roles = "admin")]
+        public async Task<IActionResult> OnlyAdmin()
+        {
+            var userInfo = await _movieApiService.GetUserInfo();
+            return View(userInfo);
         }
     }
 }

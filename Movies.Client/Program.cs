@@ -1,8 +1,10 @@
+using IdentityModel;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using Movies.Client.ApiServices;
 using Movies.Client.HttpHandlers;
@@ -35,13 +37,13 @@ builder.Services.AddHttpClient("IDPClient", client =>
     client.DefaultRequestHeaders.Add(HeaderNames.Accept, "application/json");
 });
 
-builder.Services.AddSingleton(new ClientCredentialsTokenRequest
-{
-    Address = "https://localhost:5005/connect/token",
-    ClientId = "movieClient",
-    ClientSecret = "secret",
-    Scope = "movieAPI"
-});
+// builder.Services.AddSingleton(new ClientCredentialsTokenRequest
+// {
+//     Address = "https://localhost:5005/connect/token",
+//     ClientId = "movieClient",
+//     ClientSecret = "secret",
+//     Scope = "movieAPI"
+// });
 
 builder.Services.AddHttpContextAccessor();
 
@@ -58,31 +60,30 @@ builder.Services.AddAuthentication(options =>
 
         options.ClientId = "movies_mvc_client";
         options.ClientSecret = "secret";
-        options.ResponseType = "code";
-        //options.ResponseType = "code id_token";
+        options.ResponseType = "code id_token";
 
-        options.Scope.Add("openid");
-        options.Scope.Add("profile");
-        // options.Scope.Add("address");
-        // options.Scope.Add("email");
-        // options.Scope.Add("roles");
+        //options.Scope.Add("openid");
+        //options.Scope.Add("profile");
+        options.Scope.Add("movieAPI");
+        options.Scope.Add("address");
+        options.Scope.Add("email");
+        options.Scope.Add("roles");
 
         // options.ClaimActions.DeleteClaim("sid");
         // options.ClaimActions.DeleteClaim("idp");
         // options.ClaimActions.DeleteClaim("s_hash");
         // options.ClaimActions.DeleteClaim("auth_time");
-        // options.ClaimActions.MapUniqueJsonKey("role", "role");
 
-        //options.Scope.Add("movieAPI");
+        options.ClaimActions.MapUniqueJsonKey("role", "role");
 
         options.SaveTokens = true;
         options.GetClaimsFromUserInfoEndpoint = true;
 
-        // options.TokenValidationParameters = new TokenValidationParameters
-        // {                       
-        //     NameClaimType = JwtClaimTypes.GivenName,
-        //     RoleClaimType = JwtClaimTypes.Role
-        // };
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            NameClaimType = JwtClaimTypes.GivenName,
+            RoleClaimType = JwtClaimTypes.Role
+        };
     });
 
 
