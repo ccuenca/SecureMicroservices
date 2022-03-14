@@ -6,7 +6,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="MiCrosoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.3"/>
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.0" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2"/>
 		<PackageReference Include="IdentityModel" Version="6.0.0"/>
 	</ItemGroup>
 </Project>

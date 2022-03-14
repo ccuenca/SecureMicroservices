@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (Movies.API)",
+            "name": "Movies.API",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build (Movies.API)",
@@ -13,20 +13,20 @@
             "args": [],
             "cwd": "${workspaceFolder}/Movies.API",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5011"
+                "ASPNETCORE_URLS": "https://localhost:5001"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
         },
         {
-            "name": ".NET Core Launch (IdentityServer)",
+            "name": "IdentityServer",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build (IS)",
@@ -34,20 +34,20 @@
             "args": [],
             "cwd": "${workspaceFolder}/IdentityServer",
             "stopAtEntry": false,
-            "serverReadyAction": {
-                "action": "openExternally",
-                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
-            },
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "https://localhost:5005;http://localhost:5010/"
+                "ASPNETCORE_URLS": "https://localhost:5005"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
         },
         {
-            "name": ".NET Core Launch (Movies.Client)",
+            "name": "Movies.Client",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build (Movies.Client)",
@@ -61,11 +61,43 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "https://localhost:5002;http://localhost:5012/"
+                "ASPNETCORE_URLS": "https://localhost:5002"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
+        },
+        {
+            "name": "ApiGateway",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build (AG)",
+            "program": "${workspaceFolder}/ApiGateway/bin/Debug/net6.0/ApiGateway.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/ApiGateway",
+            "stopAtEntry": false,
+            // "serverReadyAction": {
+            //     "action": "openExternally",
+            //     "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            // },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:5010/"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        }
+    ],
+    "compounds": [
+        {
+            "name": "All Projects",
+            "configurations": [
+                "IdentityServer",
+                "Movies.API",
+                "Movies.Client",
+                "ApiGateway"
+            ]
         }
     ]
 }
